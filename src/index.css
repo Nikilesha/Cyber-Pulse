@@ -1,8 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 @import "tailwindcss";
 
-:root{
-  font-family: "Roboto",sans-serif;
+@theme {
+  /* Fonts */
+  --font-sans: "Roboto Mono", monospace;
+
+  /* Layout Colors */
   --color-background: #0C0229;
-  --color-navbar:#1B1E24;
+  --color-navbar: #1B1E24;
+  --color-sidebar: #22262D;
+  --color-comp: #2E323A;
+
+  /* Text Colors */
+  --color-text-primary: #E6E6E6;
+  --color-text-secondary: #00FF66;
+  --color-text-extra: #A0A0A0;
+
+  /* Attack Colors */
+  --color-attack1: #FF4D4D;
+  --color-attack2: #FFA64D;
+  --color-attack3: #FFD93D;
+  --color-attack4: #4DA6FF;
+  --color-attack5: #B366FF;
+  --color-attack6: #4DFFE1;
+
+  /* Utility Colors */
+  --color-utility1: #4DFF88;
+  --color-utility2: #FFC94D;
+  --color-utility3: #FF4D6D;
+  --color-utility4: #666A70;
 }
+
+
+
+@theme {
+  --animate-pulseGlowGreen: pulseGlowGreen 3s ease-in-out infinite;
+  --animate-pulseGlowRed: pulseGlowRed 2s ease-in-out infinite;
+
+  @keyframes pulseGlowGreen {
+    0%, 100% {
+      box-shadow: 0 0 30px 10px rgba(34, 197, 94, 0.6);
+    }
+    50% {
+      box-shadow: 0 0 15px 5px rgba(34, 197, 94, 0.3);
+    }
+  }
+
+  @keyframes pulseGlowRed {
+    0%, 100% { box-shadow: 0 0 30px 10px rgba(239, 68, 68, 0.6); }
+    50%      { box-shadow: 0 0 15px 5px rgba(239, 68, 68, 0.3); }
+  }
+}
+
