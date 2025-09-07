@@ -13,14 +13,14 @@ const Navbar = () => {
         </div>
 
         {/* Nav items (centered) */}
-        <ul className="h-20 items-center justify-center hidden lg:flex flex-grow space-x-10">
+        <ul className="h-20 items-center justify-center hidden lg:flex flex-grow space-x-20">
           {navitems.map((item, index) => (
             <li key={index} className="relative group">
               <a
                 href={item.href}
-                className="hover:text-[var(--color-text-secondary)] transition-colors duration-300"
-              >
-                {item.label}
+                className="flex items-center gap-2 hover:text-[var(--color-text-secondary)] transition-colors duration-300"
+              > {item.icon}
+                <span>{item.label}</span>
               </a>
               {/* Underline animation */}
               <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--color-text-secondary)] transition-all duration-300 group-hover:w-full"></span>
@@ -32,7 +32,7 @@ const Navbar = () => {
 
         <div
           onClick={() => setIsLive(!isLive)}
-          className="h-[60px] w-[90px] flex items-center justify-start ml-20 space-x-2.5 cursor-pointer select-none"
+          className="h-[20px] w-[70px] flex items-center justify-start ml-20 space-x-2.5 cursor-pointer select-none "
         >
           <span className="text-sm font-semibold">
             {isLive ? "LIVE" : "SIM"}
@@ -47,6 +47,7 @@ const Navbar = () => {
         </div>
       </nav>
 
+      {/* Main Page */}
       <div className="min-h-screen w-full bg-[var(--color-background)]"></div>
     </>
   );
