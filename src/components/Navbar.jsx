@@ -2,7 +2,7 @@ import { useState } from "react";
 import logo from "../assets/logo.png";
 import { navitems } from "../constants";
 import { Menu, X } from "lucide-react";
-import { motion,AnimatePresence } from "framer-motion"; // animation
+import { motion as Motion,AnimatePresence } from "framer-motion"; // animation
 
 const Navbar = () => {
   const [isLive, setIsLive] = useState(true);
@@ -90,7 +90,7 @@ const Navbar = () => {
             />
 
             {/* Drawer */}
-            <motion.div
+            <Motion.div
               className="fixed top-0 left-0 w-3/4 sm:w-1/2 h-full bg-[var(--color-navbar)] text-[var(--color-text-primary)] z-50 p-6"
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
@@ -135,7 +135,7 @@ const Navbar = () => {
                   }`}
                 ></span>
               </div>
-            </motion.div>
+            </Motion.div>
           </>
         )}
       </AnimatePresence>
