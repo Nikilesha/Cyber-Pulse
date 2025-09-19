@@ -1,38 +1,59 @@
 import { useState } from "react";
 import logo from "../assets/logo.png";
 import { navitems } from "../constants";
+import { Menu, X } from "lucide-react";
+import { motion,AnimatePresence } from "framer-motion"; // animation
 
 const Navbar = () => {
   const [isLive, setIsLive] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
-      <nav className="h-20 w-full bg-[var(--color-navbar)] flex items-center text-[var(--color-text-primary)] px-6">
-        {/* Logo (left) */}
+      <nav className="fixed top-0 h-20 w-full bg-[var(--color-navbar)] flex items-center justify-between text-[var(--color-text-primary)] px-6 z-50">
+        {/* Logo */}
         <div className="flex-shrink-0">
-          <img src={logo} alt="Website Logo" className="h-20 w-auto" />
+          <img
+            src={logo}
+            alt="Website Logo"
+            className="h-16 w-auto md:h-16 lg:h-14"
+          />
         </div>
 
-        {/* Nav items (centered) */}
-        <ul className="h-20 items-center justify-center hidden lg:flex flex-grow space-x-20">
+        {/* Desktop Menu */}
+        <ul className="hidden lg:flex flex-grow items-center justify-center space-x-20 w-auto">
           {navitems.map((item, index) => (
-            <li key={index} className="relative group">
+            <li
+              key={index}
+              className="relative group cursor-pointer"
+              onClick={() => setActiveIndex(index)}
+            >
               <a
                 href={item.href}
-                className="flex items-center gap-2 hover:text-[var(--color-text-secondary)] transition-colors duration-300"
-              > {item.icon}
+                className={`flex items-center gap-2 transition-colors duration-300 ${
+                  activeIndex === index
+                    ? "text-[var(--color-text-secondary)]"
+                    : "hover:text-[var(--color-text-secondary)]"
+                }`}
+              >
+                {item.icon}
                 <span>{item.label}</span>
               </a>
-              {/* Underline animation */}
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[var(--color-text-secondary)] transition-all duration-300 group-hover:w-full"></span>
+
+              {/* underline highlight */}
+              <span
+                className={`absolute left-0 -bottom-1 h-[2px] bg-[var(--color-text-secondary)] transition-all duration-300 
+                  ${activeIndex === index ? "w-full" : "w-0 group-hover:w-full"}`}
+              ></span>
             </li>
           ))}
         </ul>
 
-        {/* Spacer */}
-
+        {/* Live/Sim Toggle (desktop) */}
         <div
           onClick={() => setIsLive(!isLive)}
-          className="h-[20px] w-[70px] flex items-center justify-start ml-20 space-x-2.5 cursor-pointer select-none "
+          className="hidden lg:flex h-[20px] w-[70px] items-center justify-start ml-6 space-x-2.5 cursor-pointer select-none"
         >
           <span className="text-sm font-semibold">
             {isLive ? "LIVE" : "SIM"}
@@ -45,10 +66,79 @@ const Navbar = () => {
             }`}
           ></span>
         </div>
+
+        {/* Hamburger (Mobile only) */}
+        <button
+          className="lg:hidden text-2xl z-50 relative"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </nav>
 
-      {/* Main Page */}
-      <div className="min-h-screen w-full bg-[var(--color-background)]"></div>
+      {/* Mobile Slide-in Drawer */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Overlay */}
+            <motion.div
+              className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)} // close if clicking outside
+            />
+
+            {/* Drawer */}
+            <motion.div
+              className="fixed top-0 left-0 w-3/4 sm:w-1/2 h-full bg-[var(--color-navbar)] text-[var(--color-text-primary)] z-50 p-6"
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "spring", stiffness: 80, damping: 20 }}
+            >
+              {/* Drawer Menu Items */}
+              <ul className="flex flex-col space-y-6 mt-10 text-lg">
+                {navitems.map((item, index) => (
+                  <li key={index}>
+                    <a
+                      href={item.href}
+                      onClick={() => {
+                        setActiveIndex(index);
+                        setIsOpen(false);
+                      }}
+                      className={`inline-block px-2 py-1 rounded transition-colors duration-300 ${
+                        activeIndex === index
+                          ? "text-[var(--color-text-secondary)]"
+                          : "hover:text-[var(--color-text-secondary)]"
+                      }`}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Live/Sim Toggle inside drawer */}
+              <div
+                onClick={() => setIsLive(!isLive)}
+                className="mt-8 flex items-center space-x-3 cursor-pointer select-none"
+              >
+                <span className="text-sm font-semibold">
+                  {isLive ? "LIVE" : "SIM"}
+                </span>
+                <span
+                  className={`h-4 w-4 rounded-full ${
+                    isLive
+                      ? "bg-green-400 animate-pulseGlowGreen"
+                      : "bg-red-500 animate-pulseGlowRed"
+                  }`}
+                ></span>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 };
