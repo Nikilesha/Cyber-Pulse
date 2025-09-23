@@ -2,7 +2,7 @@ import { useState } from "react";
 import logo from "../assets/logo.png";
 import { navitems } from "../constants";
 import { Menu, X } from "lucide-react";
-import { motion as Motion,AnimatePresence } from "framer-motion"; // animation
+import { motion as Motion,AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isLive, setIsLive] = useState(true);
@@ -69,7 +69,7 @@ const Navbar = () => {
 
         {/* Hamburger (Mobile only) */}
         <button
-          className="lg:hidden text-2xl z-50 relative"
+          className="lg:hidden text-2xl z-50 relative cursor-pointer hover:bg-amber-50/10 hover:rounded "
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -81,7 +81,7 @@ const Navbar = () => {
         {isOpen && (
           <>
             {/* Overlay */}
-            <motion.div
+            <Motion.div
               className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

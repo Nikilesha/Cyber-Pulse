@@ -1,11 +1,14 @@
-import React from 'react'
+import Navbar from "../components/Navbar";
 
 const LivePage = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+      <Navbar></Navbar>
+      <main className="bg-[var(--color-background)] min-h-screen">
+        
+      </main>
+    </>
+  );
+};
 
-export default LivePage
+export default LivePage;

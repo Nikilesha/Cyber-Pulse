@@ -1,13 +1,13 @@
 
 import './index.css'
-import Navbar from './components/Navbar';
+import LivePage from './pages/LivePage';
 
 function App() {
   
 
   return (
     <>
-      <Navbar></Navbar>
+      <LivePage></LivePage>
     </>
   )
 }
