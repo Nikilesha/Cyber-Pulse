@@ -97,7 +97,7 @@ const Navbar = () => {
               exit={{ x: "-100%" }}
               transition={{ type: "spring", stiffness: 80, damping: 20 }}
             >
-              {/* Drawer Menu Items */}
+              {/*Menu Items */}
               <ul className="flex flex-col space-y-6 mt-10 text-lg">
                 {navitems.map((item, index) => (
                   <li key={index}>
