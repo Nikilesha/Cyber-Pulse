@@ -6,6 +6,42 @@ import countryData from "../assets/custom.geo2.json"; // your downloaded GeoJSON
 const GlobeComponent = () => {
   const globeRef = useRef();
 
+  const addStars = (
+    scene,
+    count = 2000,
+    minDistance = 1500,
+    maxDistance = 4000
+  ) => {
+    const geometry = new THREE.BufferGeometry();
+    const positions = [];
+
+    for (let i = 0; i < count; i++) {
+      // Create a random point in spherical coordinates
+      const radius = Math.random() * (maxDistance - minDistance) + minDistance;
+      const theta = Math.random() * 2 * Math.PI; // horizontal angle
+      const phi = Math.acos(Math.random() * 2 - 1); // vertical angle
+
+      const x = radius * Math.sin(phi) * Math.cos(theta);
+      const y = radius * Math.sin(phi) * Math.sin(theta);
+      const z = radius * Math.cos(phi);
+
+      positions.push(x, y, z);
+    }
+
+    geometry.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(positions, 3)
+    );
+
+    const material = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 5,
+    });
+
+    const stars = new THREE.Points(geometry, material);
+    scene.add(stars);
+  };
+
   useEffect(() => {
     if (!globeRef.current) return; // make sure div is mounted
 
@@ -53,9 +89,8 @@ const GlobeComponent = () => {
       // HEXAGON POLYGONS FROM GEOJSON
       .hexPolygonsData(countryData.features)
       .hexPolygonResolution(3)
-      .hexPolygonMargin(1)
-      .hexPolygonMargin(0.2)
-      .hexPolygonAltitude(0.0010)
+      .hexPolygonMargin(0.2) // spacing between hexes
+      .hexPolygonAltitude(0.001)
       .hexPolygonColor((d) => {
         const value = d.properties.value ?? Math.random(); // random if no property
         if (value < 0.25) return "#9be9a8"; // low
@@ -65,8 +100,11 @@ const GlobeComponent = () => {
       });
 
     // Auto-rotate globe
-    
+    globe.controls().autoRotate = true;
     globe.controls().autoRotateSpeed = 0.9;
+
+    // Add stars
+    addStars(globe.scene());
   }, []);
 
   return <div ref={globeRef} style={{ width: "100vw", height: "100vh" }} />;
