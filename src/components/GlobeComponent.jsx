@@ -69,7 +69,7 @@ const GlobeComponent = () => {
       .arcAltitude((d) => d.height)
       .arcStroke("size")
       .arcDashLength(() => 0.5)
-      .arcDashGap(() => 0.2)
+      .arcDashGap(() => 0.1)
       .arcDashAnimateTime(() => 2000)
       .atmosphereColor("lightskyblue")
       .atmosphereAltitude(0.1)
