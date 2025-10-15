@@ -10,3 +10,4 @@ class City(Base):
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
     population = Column(Integer, nullable=True)
+

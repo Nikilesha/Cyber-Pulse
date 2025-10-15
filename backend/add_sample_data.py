@@ -5,30 +5,110 @@ db = SessionLocal()
 
 cities = [
     City(city_name="New York", country="USA", latitude=40.7128, longitude=-74.0060, population=8419600),
+    City(city_name="Los Angeles", country="USA", latitude=34.0522, longitude=-118.2437, population=3980400),
+    City(city_name="Chicago", country="USA", latitude=41.8781, longitude=-87.6298, population=2716000),
+    City(city_name="Houston", country="USA", latitude=29.7604, longitude=-95.3698, population=2328000),
+    City(city_name="Phoenix", country="USA", latitude=33.4484, longitude=-112.0740, population=1690000),
     City(city_name="London", country="UK", latitude=51.5074, longitude=-0.1278, population=8982000),
+    City(city_name="Manchester", country="UK", latitude=53.4808, longitude=-2.2426, population=553230),
+    City(city_name="Birmingham", country="UK", latitude=52.4862, longitude=-1.8904, population=1141816),
     City(city_name="Tokyo", country="Japan", latitude=35.6895, longitude=139.6917, population=13929286),
-    City(city_name="Delhi", country="India", latitude=28.6139, longitude=77.2090, population=16787941)
+    City(city_name="Osaka", country="Japan", latitude=34.6937, longitude=135.5023, population=2691000),
+    City(city_name="Kyoto", country="Japan", latitude=35.0116, longitude=135.7681, population=1475000),
+    City(city_name="Delhi", country="India", latitude=28.6139, longitude=77.2090, population=16787941),
+    City(city_name="Mumbai", country="India", latitude=19.0760, longitude=72.8777, population=20411000),
+    City(city_name="Bangalore", country="India", latitude=12.9716, longitude=77.5946, population=8443675),
+    City(city_name="Chennai", country="India", latitude=13.0827, longitude=80.2707, population=7088000),
+    City(city_name="Kolkata", country="India", latitude=22.5726, longitude=88.3639, population=4496694),
+    City(city_name="Beijing", country="China", latitude=39.9042, longitude=116.4074, population=21540000),
+    City(city_name="Shanghai", country="China", latitude=31.2304, longitude=121.4737, population=26320000),
+    City(city_name="Shenzhen", country="China", latitude=22.5431, longitude=114.0579, population=17560000),
+    City(city_name="Guangzhou", country="China", latitude=23.1291, longitude=113.2644, population=14900000),
+    City(city_name="Paris", country="France", latitude=48.8566, longitude=2.3522, population=2148000),
+    City(city_name="Marseille", country="France", latitude=43.2965, longitude=5.3698, population=861635),
+    City(city_name="Lyon", country="France", latitude=45.7640, longitude=4.8357, population=515695),
+    City(city_name="Berlin", country="Germany", latitude=52.5200, longitude=13.4050, population=3769000),
+    City(city_name="Munich", country="Germany", latitude=48.1351, longitude=11.5820, population=1472000),
+    City(city_name="Hamburg", country="Germany", latitude=53.5511, longitude=9.9937, population=1841000),
+    City(city_name="Rome", country="Italy", latitude=41.9028, longitude=12.4964, population=2873000),
+    City(city_name="Milan", country="Italy", latitude=45.4642, longitude=9.1900, population=1366000),
+    City(city_name="Naples", country="Italy", latitude=40.8518, longitude=14.2681, population=962003),
+    City(city_name="Madrid", country="Spain", latitude=40.4168, longitude=-3.7038, population=3266000),
+    City(city_name="Barcelona", country="Spain", latitude=41.3851, longitude=2.1734, population=1620000),
+    City(city_name="Valencia", country="Spain", latitude=39.4699, longitude=-0.3763, population=791413),
+    City(city_name="Sydney", country="Australia", latitude=-33.8688, longitude=151.2093, population=5312000),
+    City(city_name="Melbourne", country="Australia", latitude=-37.8136, longitude=144.9631, population=5078000),
+    City(city_name="Brisbane", country="Australia", latitude=-27.4698, longitude=153.0251, population=2514000),
+    City(city_name="Perth", country="Australia", latitude=-31.9505, longitude=115.8605, population=2048000),
+    City(city_name="Toronto", country="Canada", latitude=43.6532, longitude=-79.3832, population=2930000),
+    City(city_name="Vancouver", country="Canada", latitude=49.2827, longitude=-123.1207, population=662248),
+    City(city_name="Montreal", country="Canada", latitude=45.5017, longitude=-73.5673, population=1780000),
+    City(city_name="Calgary", country="Canada", latitude=51.0447, longitude=-114.0719, population=1239000),
+    City(city_name="Mexico City", country="Mexico", latitude=19.4326, longitude=-99.1332, population=9209944),
+    City(city_name="Guadalajara", country="Mexico", latitude=20.6597, longitude=-103.3496, population=1495000),
+    City(city_name="Monterrey", country="Mexico", latitude=25.6866, longitude=-100.3161, population=1135000),
+    City(city_name="São Paulo", country="Brazil", latitude=-23.5505, longitude=-46.6333, population=12252000),
+    City(city_name="Rio de Janeiro", country="Brazil", latitude=-22.9068, longitude=-43.1729, population=6748000),
+    City(city_name="Brasília", country="Brazil", latitude=-15.8267, longitude=-47.9218, population=3055149),
+    City(city_name="Buenos Aires", country="Argentina", latitude=-34.6037, longitude=-58.3816, population=2891000),
+    City(city_name="Santiago", country="Chile", latitude=-33.4489, longitude=-70.6693, population=5744000),
+    City(city_name="Lima", country="Peru", latitude=-12.0464, longitude=-77.0428, population=9675000),
+    City(city_name="Cairo", country="Egypt", latitude=30.0444, longitude=31.2357, population=9900000),
+    City(city_name="Alexandria", country="Egypt", latitude=31.2001, longitude=29.9187, population=5200000),
+    City(city_name="Johannesburg", country="South Africa", latitude=-26.2041, longitude=28.0473, population=957441),
+    City(city_name="Cape Town", country="South Africa", latitude=-33.9249, longitude=18.4241, population=433688),
+    City(city_name="Nairobi", country="Kenya", latitude=-1.2921, longitude=36.8219, population=4397000),
+    City(city_name="Lagos", country="Nigeria", latitude=6.5244, longitude=3.3792, population=14000000),
+    City(city_name="Abuja", country="Nigeria", latitude=9.0579, longitude=7.4951, population=1235880),
+    City(city_name="Istanbul", country="Turkey", latitude=41.0082, longitude=28.9784, population=15460000),
+    City(city_name="Ankara", country="Turkey", latitude=39.9208, longitude=32.8541, population=5503985),
+    City(city_name="Tehran", country="Iran", latitude=35.6892, longitude=51.3890, population=8846782),
+    City(city_name="Baghdad", country="Iraq", latitude=33.3152, longitude=44.3661, population=7180889),
+    City(city_name="Karachi", country="Pakistan", latitude=24.8607, longitude=67.0011, population=14910000),
+    City(city_name="Lahore", country="Pakistan", latitude=31.5204, longitude=74.3587, population=11126285),
+    City(city_name="Islamabad", country="Pakistan", latitude=33.6844, longitude=73.0479, population=1095064),
+    City(city_name="Dhaka", country="Bangladesh", latitude=23.8103, longitude=90.4125, population=8906000),
+    City(city_name="Chittagong", country="Bangladesh", latitude=22.3569, longitude=91.7832, population=2694000),
+    City(city_name="Bangkok", country="Thailand", latitude=13.7563, longitude=100.5018, population=8281000),
+    City(city_name="Hanoi", country="Vietnam", latitude=21.0278, longitude=105.8342, population=8000000),
+    City(city_name="Ho Chi Minh City", country="Vietnam", latitude=10.7769, longitude=106.7009, population=9000000),
+    City(city_name="Jakarta", country="Indonesia", latitude=-6.2088, longitude=106.8456, population=10770487),
+    City(city_name="Kuala Lumpur", country="Malaysia", latitude=3.1390, longitude=101.6869, population=1800000),
+    City(city_name="Singapore", country="Singapore", latitude=1.3521, longitude=103.8198, population=5638700),
+    City(city_name="Seoul", country="South Korea", latitude=37.5665, longitude=126.9780, population=9776000),
+    City(city_name="Busan", country="South Korea", latitude=35.1796, longitude=129.0756, population=3450000),
+    City(city_name="Taipei", country="Taiwan", latitude=25.0330, longitude=121.5654, population=2636000),
+    City(city_name="Hong Kong", country="China (SAR)", latitude=22.3193, longitude=114.1694, population=7497000),
+    City(city_name="Doha", country="Qatar", latitude=25.276987, longitude=51.520008, population=956460),
+    City(city_name="Dubai", country="UAE", latitude=25.2048, longitude=55.2708, population=3331400),
+    City(city_name="Abu Dhabi", country="UAE", latitude=24.4539, longitude=54.3773, population=1450000),
+    City(city_name="Riyadh", country="Saudi Arabia", latitude=24.7136, longitude=46.6753, population=7200000),
+    City(city_name="Jeddah", country="Saudi Arabia", latitude=21.4858, longitude=39.1925, population=3976000),
+    City(city_name="Tel Aviv", country="Israel", latitude=32.0853, longitude=34.7818, population=460613),
+    City(city_name="Jerusalem", country="Israel", latitude=31.7683, longitude=35.2137, population=936425),
+    City(city_name="Athens", country="Greece", latitude=37.9838, longitude=23.7275, population=664046),
+    City(city_name="Warsaw", country="Poland", latitude=52.2297, longitude=21.0122, population=1790658),
+    City(city_name="Prague", country="Czech Republic", latitude=50.0755, longitude=14.4378, population=1309000),
+    City(city_name="Vienna", country="Austria", latitude=48.2082, longitude=16.3738, population=1911000),
+    City(city_name="Zurich", country="Switzerland", latitude=47.3769, longitude=8.5417, population=402762),
+    City(city_name="Stockholm", country="Sweden", latitude=59.3293, longitude=18.0686, population=975551),
+    City(city_name="Oslo", country="Norway", latitude=59.9139, longitude=10.7522, population=697549),
+    City(city_name="Copenhagen", country="Denmark", latitude=55.6761, longitude=12.5683, population=602481),
+    City(city_name="Helsinki", country="Finland", latitude=60.1699, longitude=24.9384, population=658864),
+    City(city_name="Dublin", country="Ireland", latitude=53.3498, longitude=-6.2603, population=554554),
+    City(city_name="Edinburgh", country="UK", latitude=55.9533, longitude=-3.1883, population=554000),
+    City(city_name="Lisbon", country="Portugal", latitude=38.7169, longitude=-9.1399, population=545923),
+    City(city_name="Budapest", country="Hungary", latitude=47.4979, longitude=19.0402, population=1752286),
+    City(city_name="Brussels", country="Belgium", latitude=50.8503, longitude=4.3517, population=185103),
+    City(city_name="Amsterdam", country="Netherlands", latitude=52.3676, longitude=4.9041, population=821752),
+    City(city_name="Reykjavik", country="Iceland", latitude=64.1466, longitude=-21.9426, population=131136),
+    City(city_name="Wellington", country="New Zealand", latitude=-41.2865, longitude=174.7762, population=212700),
+    City(city_name="Auckland", country="New Zealand", latitude=-36.8485, longitude=174.7633, population=1657000),
+    City(city_name="Honolulu", country="USA", latitude=21.3069, longitude=-157.8583, population=345064)
 ]
 
 db.add_all(cities)
 db.commit()
 db.close()
 
-print("✅ Sample cities added!")
-from database import SessionLocal
-from models import City
-
-db = SessionLocal()
-
-cities = [
-    City(city_name="New York", country="USA", latitude=40.7128, longitude=-74.0060, population=8419600),
-    City(city_name="London", country="UK", latitude=51.5074, longitude=-0.1278, population=8982000),
-    City(city_name="Tokyo", country="Japan", latitude=35.6895, longitude=139.6917, population=13929286),
-    City(city_name="Delhi", country="India", latitude=28.6139, longitude=77.2090, population=16787941)
-]
-
-db.add_all(cities)
-db.commit()
-db.close()
-
-print("✅ Sample cities added!")
+print("✅ 100 sample cities added successfully!")
