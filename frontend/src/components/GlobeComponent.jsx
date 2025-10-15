@@ -54,6 +54,7 @@ const GlobeComponent = () => {
   }, []);
 
   // Generate a new arc
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const generateArc = () => {
     const blockedIds = [
       ...cooldownCityIdsRef.current,
@@ -109,7 +110,7 @@ const GlobeComponent = () => {
       .hexPolygonResolution(3)
       .hexPolygonMargin(0.25)
       .hexPolygonAltitude(0.002)
-      .hexPolygonColor(d => {
+      .hexPolygonColor(() => {
         const value = Math.random();
         if (value < 0.25) return "#9be9a8";
         if (value < 0.5) return "#40c463";
@@ -223,7 +224,7 @@ const GlobeComponent = () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("resize", handleResize);
     };
-  }, [cityData]);
+  }, [cityData, generateArc]);
 
   return (
     <div
