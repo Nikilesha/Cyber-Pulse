@@ -8,11 +8,11 @@ const GlobeComponent = () => {
   const defaultCameraPosition = useRef(null);
   const [cityData, setCityData] = useState([]);
 
-  const MAX_ARCS = 10;       // max arcs at a time
+  const MAX_ARCS = 15;       // max arcs at a time
   const ARC_HEIGHT = 0.35;  
   const ARC_INTERVAL = 100;  // ms between new arcs
   const CITY_COOLDOWN = 200; // ms before reusing cities
-  const ARC_LIFESPAN = 3800;  // how long each arc fades out
+  const ARC_LIFESPAN = 4000;  // how long each arc fades out
 
   const activeArcsRef = useRef([]);
   const cooldownCityIdsRef = useRef([]);
